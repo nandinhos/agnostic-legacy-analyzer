@@ -1,0 +1,4 @@
+interface:
+  display_name: "Modernizacao de Legado"
+  short_description: "Arqueologia de dominio para legados"
+  default_prompt: "Use $modernizacao-legado para auditar um sistema legado e produzir documentacao de reconstrucao."
