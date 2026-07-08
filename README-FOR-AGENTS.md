@@ -82,6 +82,16 @@ Contem a versao Hermes Agent (Nous Research) da metodologia, no formato de distr
 
 A versao Hermes herda a metodologia do Codex/OpenCode (progressive disclosure, encoding policy ASCII) e a estrutura de agent do OpenCode (PT pleno no SOUL.md).
 
+### `.antigravity/`
+
+Contem a versao Antigravity CLI (Google) da metodologia, no formato proprio:
+
+- `.antigravity/skills/modernizacao-legado/SKILL.md`: skill principal.
+- `.antigravity/skills/modernizacao-legado/references/`: 2 references (inspecao-banco + perfil-laravel-filament).
+- `.antigravity/agents/arquiteto-modernizacao-legado.md`: agente local/persona.
+
+**Nota sobre formato:** O Antigravity CLI tem duas interpretacoes de formato para skills. Esta versao usa o formato proprio (`.antigravity/skills/`). Algumas instalacoes esperam formato Claude (`.claude/skills/`); neste caso, copie o SKILL.md para `.claude/skills/modernizacao-legado.md` ou ajuste os paths. Veja secao "Notas Sobre Formato" no SKILL.md para detalhes.
+
 ### `docs/`
 
 Guarda documentacao voltada a humanos e agentes:

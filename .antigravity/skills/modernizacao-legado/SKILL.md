@@ -1,0 +1,105 @@
+---
+name: modernizacao-legado
+description: "Metodologia Antigravity para arqueologia de dominio e modernizacao de sistemas legados. Use quando a tarefa envolver sistema legado, codigo antigo em producao, auditoria tecnica, extracao de regras de negocio a partir de codigo e banco, avaliacao de camada intermediaria/MVC parcial, migracao, reescrita para stack moderna, plano conceitual de migracao de dados, ou reconstrucao recomendada em PHP 8.4+ / Laravel / Filament. Produz documentacao tecnica rastreavel; nao altera codigo legado, banco, configuracao nem dados."
+---
+
+# Modernizacao de Sistemas Legados
+
+Use esta skill para conduzir uma missao de arqueologia de dominio dentro do Antigravity CLI: observar o sistema real, separar regra de negocio de acidente de implementacao e produzir documentacao suficiente para reconstruir o sistema em uma arquitetura moderna.
+
+A saida normal vive em `docs/legacy-modernization/`. A missao e documental: nao editar codigo legado, nao alterar banco, nao executar DML/DDL e nao tratar comportamento defeituoso como requisito.
+
+## Contrato Operacional
+
+1. Comecar por reconhecimento read-only: arvore do projeto, pontos de entrada, stack, configuracoes mascaradas, banco disponivel e camada intermediaria se existir.
+2. Registrar progresso em `docs/legacy-modernization/_progresso.md`; toda retomada le esse arquivo antes de continuar.
+3. Escrever documentos incrementalmente. Nao acumular uma fase inteira apenas no contexto.
+4. Citar evidencia em cada conclusao relevante: `arquivo:linha`, `tabela.coluna`, query de leitura, contagem ou amostra anonimizada.
+5. Usar `HIPOTESE`, `VALIDAR COM OWNER`, `FORTE INDICIO` ou `DECISAO CANONICA` quando a confianca importar.
+6. Preservar dados pessoais e segredos: anonimizar exemplos e mascarar credenciais.
+7. Para missoes longas, manter plano visivel e validar consistencia entre documentos antes do fechamento.
+
+## Parametros Da Missao
+
+Inferir do repositorio sempre que possivel; perguntar apenas quando a resposta for bloqueante:
+
+- raiz do legado;
+- local de camada intermediaria, por exemplo `app/`, se existir;
+- forma de acesso ao banco: dump, replica, cliente read-only ou phpMyAdmin;
+- se a base e producao; producao exige autorizacao explicita;
+- stack de destino;
+- diretorio de documentacao, padrao `docs/legacy-modernization/`;
+- idioma, padrao idioma do usuario.
+
+## Referencias Sob Demanda
+
+- Antes de analisar banco ou dump SQL, ler `references/inspecao-banco.md`.
+- Se a stack de destino for PHP 8.4+ / Laravel / Filament, ler `references/perfil-laravel-filament.md` antes das etapas 7, 8, 9 e ao complementar testes.
+- Para executar a missao como persona especializada local, usar tambem `.antigravity/agents/arquiteto-modernizacao-legado.md` quando existir no workspace.
+
+## Separacoes Obrigatorias
+
+Nunca misturar:
+
+```text
+regra de negocio real   != implementacao legada
+fluxo operacional real  != ordem das telas
+entidade de dominio     != tabela existente
+campo existente         != campo necessario
+camada intermediaria    != arquitetura final
+SQL legado              != regra canonica
+tela antiga             != caso de uso
+comentario no codigo    != documentacao confiavel
+```
+
+## Marcadores
+
+Confianca e decisao: `DECISAO CANONICA`, `FORTE INDICIO`, `HIPOTESE`, `REGRA CONFLITANTE`, `LEGADO A PRESERVAR`, `LEGADO A DESCARTAR`, `REESCREVER`, `VALIDAR COM OWNER`, `RISCO CRITICO`.
+
+Classificacao de legado: `REGRA CANONICA`, `COMPORTAMENTO LEGADO`, `GAMBIARRA`, `DUPLICIDADE`, `RISCO`, `CANDIDATO A DESCARTE`, `CANDIDATO A REESCRITA`, `CANDIDATO A PRESERVACAO`.
+
+Classificacao de regras: `REGRA CANONICA`, `REGRA PROVAVEL`, `HIPOTESE`, `REGRA DUPLICADA`, `REGRA CONFLITANTE`, `REGRA OBSOLETA`, `REGRA PERIGOSA`.
+
+Mapeamento com a versao Claude (acentuacao plena -> ASCII puro): `CANONICA` -> `CANONICA`, `PRESERVACAO` -> `PRESERVACAO`, `PROVAVEL` -> `PROVAVEL`, `INDICIO` -> `INDICIO`, `CRITICO` -> `CRITICO`. Mesmo semantico, representacao diferente por encoding policy.
+
+## Etapas E Entregaveis
+
+Preservar a numeracao porque ela codifica dependencias. As etapas 1-3 podem intercalar; a etapa 4 depende delas; etapas 5-6 dependem da 4; etapas 7+ dependem de 5-6. Escrever `00-resumo-executivo.md` por ultimo.
+
+0. Reconhecimento e plano: criar `README.md` e `_progresso.md`.
+1. `01-inventario-legado.md`: paginas, includes, autenticacao, permissoes, formularios, relatorios, uploads, rotinas, integracoes.
+2. `02-banco-de-dados-atual.md`: tabelas, colunas, volumes, estados reais, relacionamentos explicitos e implicitos.
+3. `03-camada-intermediaria.md`: classes, responsabilidades reais, divergencias e reaproveitamento possivel.
+4. `04-comparativo-legado-banco-intermediario.md`: funcionalidade x codigo x banco x camada intermediaria x regra canonica.
+5. `05-dominio-canonico.md`: modulos, entidades, agregados, value objects, enums, eventos e de-para de nomes.
+6. `06-regras-de-negocio.md`: regras com evidencia, criticidade, risco e recomendacao.
+7. `07-modelagem-banco-novo.md`: modelo novo orientado a dominio, nao copia do schema atual.
+8. `08-camada-de-aplicacao.md`: actions, services, policies, queries, DTOs, eventos e testes necessarios.
+9. `09-ui-administrativa.md`: UI derivada do dominio; telas legadas sao evidencia, nao molde.
+10. `10-perfis-acesso-auditoria.md`: matriz de permissoes, acoes criticas, justificativas e trilha.
+11. `11-plano-conceitual-migracao.md`: de-para, transformacoes, saneamento, validacoes e riscos.
+12. `12-testes.md`: testes de dominio, regras, autorizacao, relatorios, calculos, migracao e regressao observada.
+13. `13-roadmap-modernizacao.md`: fases, dependencias, tarefas pequenas, entregaveis, riscos e aceite.
+14. `14-decisoes-arquiteturais.md`: ADRs com contexto, decisao, alternativas rejeitadas e consequencias.
+15. `15-riscos-pontos-abertos.md`: riscos, perguntas ao owner e pendencias consolidadas.
+16. Fechamento: `00-resumo-executivo.md`, README atualizado e verificacao de consistencia.
+
+## Disciplina Antigravity
+
+Esta skill e a versao Antigravity CLI (Google) da mesma metodologia. Veja `.codex/skills/modernizacao-legado/SKILL.md`, `.claude/skills/modernizacao-legado/SKILL.md`, `.opencode/skills/modernizacao-legado/SKILL.md` e `.hermes/skills/development/modernizacao-legado/SKILL.md` para as outras versoes. A equivalencia cross-harness vive em `docs/comparativo-harnesses.md` quando existir.
+
+- Usar `read`/`write`/`edit` nativos do Antigravity para reconhecimento e gravacao.
+- Escrever documentacao gerada direto no workspace via ferramentas nativas.
+- Nao alterar codigo de producao, dados, migracoes, seeds ou configuracao do legado.
+- Se uma validacao precisar de banco de producao, parar e pedir autorizacao explicita.
+- Se encontrar credenciais, nao transcrever; registrar apenas a existencia mascarada.
+- Quando delegar a subagente/CLI dentro do Antigravity, passar escopo fechado e exigir escrita direta no documento-alvo; revisar antes de integrar.
+- **Encoding policy:** esta skill e suas references usam ASCII puro (sem acentos). Marcadores canonicos sao grafados sem acentuacao (`CANONICA`, `PRESERVACAO`, `PROVAVEL`, `INDICIO`). A versao Claude do mesmo skill usa acentuacao plena; isso e intencional e o mapeamento Claude->OpenCode vive na secao "Marcadores" deste arquivo. Qualquer divergencia alem das listadas ali e drift a ser corrigido.
+
+## Notas Sobre Formato
+
+Esta skill foi empacotada no formato proprio do Antigravity (`.antigravity/skills/modernizacao-legado/`). Algumas instalacoes do Antigravity CLI esperam o formato Claude (`.claude/skills/modernizacao-legado.md`). Se este for o seu caso, copie o conteudo deste SKILL.md para `.claude/skills/modernizacao-legado.md` ou crie um symlink. Veja README-FOR-AGENTS.md para detalhes.
+
+## Fechamento
+
+A missao esta pronta quando outra pessoa consegue, lendo apenas `docs/legacy-modernization/`, responder: o que o sistema faz, quais regras sao reais, quais sao acidentais, quais tabelas sustentam cada funcionalidade, quais entidades devem existir na arquitetura nova, o que migrar, sanear ou descartar, o que aproveitar da camada intermediaria, como testar e por onde comecar a reconstrucao.
