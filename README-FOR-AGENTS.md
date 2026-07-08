@@ -103,6 +103,15 @@ Guarda documentacao voltada a humanos e agentes:
 - criterios de validacao;
 - comparativo entre versoes.
 
+Documentos versionados (atualizar ao criar uma nova versao):
+
+- `docs/modernizacao-legado-codex.md` — guia de uso da versao Codex.
+- `docs/modernizacao-legado-opencode.md` — guia de uso da versao OpenCode (criar quando a doc existir).
+- `docs/modernizacao-legado-hermes.md` — guia de uso da versao Hermes (criar quando a doc existir).
+- `docs/comparativo-harnesses.md`: matriz comparativa de todos os harnesses suportados (Claude, Codex, OpenCode, Hermes, Antigravity). Documento de referencia para criacao de novas versoes.
+
+Tambem ha um script de validacao em `scripts/check-marker-drift.sh` que detecta drift nos 7 marcadores canonicos de "Classificacao de regras" entre os 5 `SKILL.md` da metodologia; rode antes de commit/push ou em CI (`bash scripts/check-marker-drift.sh`).
+
 Documentacao auxiliar deve ficar em `docs/`, nao dentro das skills, quando nao for necessaria para execucao direta da skill.
 
 ## Pastas Do Harness Que Podem Aparecer

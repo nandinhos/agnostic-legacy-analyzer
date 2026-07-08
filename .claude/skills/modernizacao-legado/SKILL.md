@@ -1,6 +1,7 @@
 ---
 name: modernizacao-legado
 description: "Metodologia de arqueologia de domínio e modernização de sistemas legados — da auditoria do código e do banco reais até o plano de reconstrução em stack moderna. Use sempre que a tarefa envolver sistema legado, código antigo em produção, auditoria técnica de sistema existente, extração de regras de negócio a partir de código, avaliação de camadas de refatoração parciais, migração ou reescrita para stack nova (ex.: PHP procedural para Laravel + Filament) ou plano conceitual de migração de dados — mesmo que o usuário não use a palavra 'legado'. Produz exclusivamente documentação técnica; não altera código nem dados."
+version: 1.0.0
 ---
 
 # Modernização de Sistemas Legados

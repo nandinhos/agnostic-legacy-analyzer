@@ -1,6 +1,7 @@
 ---
 name: modernizacao-legado
 description: "Metodologia Antigravity para arqueologia de dominio e modernizacao de sistemas legados. Use quando a tarefa envolver sistema legado, codigo antigo em producao, auditoria tecnica, extracao de regras de negocio a partir de codigo e banco, avaliacao de camada intermediaria/MVC parcial, migracao, reescrita para stack moderna, plano conceitual de migracao de dados, ou reconstrucao recomendada em PHP 8.4+ / Laravel / Filament. Produz documentacao tecnica rastreavel; nao altera codigo legado, banco, configuracao nem dados."
+version: 1.0.0
 ---
 
 # Modernizacao de Sistemas Legados
