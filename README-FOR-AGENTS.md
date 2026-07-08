@@ -73,9 +73,14 @@ A versao OpenCode herda a metodologia do Codex (progressive disclosure, encoding
 
 ### `.hermes/`
 
-Reservada para a versao Hermes.
+Contem a versao Hermes Agent (Nous Research) da metodologia, no formato de distribuicao:
 
-Quando criar esta versao, use o proprio harness Hermes para gerar, validar e ajustar o formato nativo.
+- `.hermes/distribution.yaml`: manifest da distribuicao.
+- `.hermes/SOUL.md`: agent/persona (substitui o `agent.md` de outros harnesses).
+- `.hermes/config.yaml`: configuracao do modelo.
+- `.hermes/skills/development/modernizacao-legado/`: skill principal + references (inspecao-banco, perfil-laravel-filament).
+
+A versao Hermes herda a metodologia do Codex/OpenCode (progressive disclosure, encoding policy ASCII) e a estrutura de agent do OpenCode (PT pleno no SOUL.md).
 
 ### `docs/`
 

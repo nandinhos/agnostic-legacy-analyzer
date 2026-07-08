@@ -1,0 +1,9 @@
+name: modernizacao-legado
+version: 1.0.0
+description: "Metodologia de arqueologia de domínio e modernização de sistemas legados."
+author: Fernando Dos Santos
+license: MIT
+homepage: https://github.com/nandinhos/agnostic-legacy-analyzer
+requires:
+  env_vars: []
+  models: []

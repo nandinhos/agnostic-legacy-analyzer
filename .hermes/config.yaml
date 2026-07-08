@@ -1,0 +1,11 @@
+model: gpt-4
+temperature: 0.3
+reasoning_effort: medium
+tool_defaults:
+  apply_patch: true
+  read: true
+  write: true
+  bash: true
+compression:
+  enabled: true
+  threshold: 8000
