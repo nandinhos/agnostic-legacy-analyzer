@@ -1,0 +1,25 @@
+# Estado local DEVORQ — gerado por tooling, nao versionar
+.devorq/state/
+.devorq/state/lessons/
+
+# Artefatos locais do harness atual
+.agents/
+
+# Backups de artefatos binarios (ex.: .skill do Claude)
+*.skill.bak
+*.skill.tmp
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Nunca versionar credenciais
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
