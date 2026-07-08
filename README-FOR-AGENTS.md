@@ -51,7 +51,7 @@ Use como referencia sem assumir que o formato serve diretamente para outros harn
 
 ### `.codex/`
 
-Contem a versao otimizada para Codex:
+Contem a versao otimizada para Codex. Status: implementada e polida (Sprint 2).
 
 - `.codex/skills/modernizacao-legado/SKILL.md`
 - `.codex/skills/modernizacao-legado/agents/openai.yaml`
@@ -63,9 +63,13 @@ A versao Codex usa progressive disclosure: o `SKILL.md` fica como contrato opera
 
 ### `.opencode/`
 
-Reservada para a versao OpenCode.
+Contem a versao OpenCode:
 
-Quando criar esta versao, use o proprio harness OpenCode para descobrir o formato mais idiomatico. Nao copie cegamente a estrutura Codex ou Claude se o OpenCode tiver convencoes melhores.
+- `.opencode/skills/modernizacao-legado/SKILL.md`: skill principal OpenCode.
+- `.opencode/skills/modernizacao-legado/references/`: references read-only (banco + perfil Laravel/Filament).
+- `.opencode/agents/arquiteto-modernizacao-legado.md`: agente local/persona operacional.
+
+A versao OpenCode herda a metodologia do Codex (progressive disclosure, encoding policy ASCII) e o estilo de agent do Claude (persona condensada). Use o proprio harness OpenCode para iterar.
 
 ### `.hermes/`
 
