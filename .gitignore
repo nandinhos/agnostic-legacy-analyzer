@@ -1,6 +1,5 @@
-# Estado local DEVORQ — gerado por tooling, nao versionar
-.devorq/state/
-.devorq/state/lessons/
+# Estado e regras locais DEVORQ — orquestracao pessoal, nao versionar
+.devorq/
 
 # Artefatos locais do harness atual
 .agents/
