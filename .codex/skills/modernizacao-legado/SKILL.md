@@ -71,8 +71,8 @@ Preservar a numeracao porque ela codifica dependencias. As etapas 1-3 podem inte
 2. `02-banco-de-dados-atual.md`: tabelas, colunas, volumes, estados reais, relacionamentos explicitos e implicitos.
 3. `03-camada-intermediaria.md`: classes, responsabilidades reais, divergencias e reaproveitamento possivel.
 4. `04-comparativo-legado-banco-intermediario.md`: funcionalidade x codigo x banco x camada intermediaria x regra canonica.
-5. `05-dominio-canonico.md`: modulos, entidades, agregados, value objects, enums, eventos e de-para de nomes.
-6. `06-regras-de-negocio.md`: regras com evidencia, criticidade, risco e recomendacao.
+5. `05-dominio-canonico.md`: modulos, entidades, agregados, value objects, enums, eventos e de-para de nomes. Detalhes em `references/etapa-5-dominio-canonico.md`.
+6. `06-regras-de-negocio.md`: regras com evidencia, criticidade, risco e recomendacao. Detalhes em `references/etapa-6-regras-negocio.md`.
 7. `07-modelagem-banco-novo.md`: modelo novo orientado a dominio, nao copia do schema atual.
 8. `08-camada-de-aplicacao.md`: actions, services, policies, queries, DTOs, eventos e testes necessarios.
 9. `09-ui-administrativa.md`: UI derivada do dominio; telas legadas sao evidencia, nao molde.
@@ -86,17 +86,7 @@ Preservar a numeracao porque ela codifica dependencias. As etapas 1-3 podem inte
 
 ## Modelos De Registro
 
-Item de inventario: arquivo; responsabilidade aparente; responsabilidade real; dados manipulados; tabelas usadas; regras embutidas; validacoes; pontos de atencao; acoplamentos; classificacao; destino na arquitetura nova.
-
-Tabela: nome; finalidade aparente; finalidade real; principais colunas; relacionamentos explicitos; relacionamentos implicitos com evidencia; volume; qualidade dos dados; risco de migracao; entidade canonica; destino.
-
-Classe intermediaria: arquivo; classe; responsabilidade declarada; responsabilidade real; dependencias; tabelas acessadas; regras encapsuladas; problemas de design; aderencia ao dominio; destino.
-
-Entidade canonica: nome; nomes legados; tabelas e arquivos relacionados; responsabilidade; atributos; relacionamentos; regras; estados; transicoes; validacoes; eventos; operacoes criticas.
-
-Regra: enunciado; evidencia no legado; evidencia no banco; evidencia na camada intermediaria; criticidade; modulo; entidades; status/calculos; risco de interpretacao; classificacao; recomendacao.
-
-ADR: contexto; decisao; alternativas rejeitadas; consequencias; impactos em banco, aplicacao, UI e testes; confianca.
+Os 6 modelos (item de inventario, tabela, classe intermediaria, entidade canonica, regra, ADR) estao detalhados em `references/modelos-registro.md`. Carregue esse arquivo ao iniciar a etapa correspondente.
 
 ## Disciplina Codex
 
