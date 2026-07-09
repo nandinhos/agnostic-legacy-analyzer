@@ -10,8 +10,11 @@ Este projeto guarda:
 
 - a versao original para Claude;
 - a versao otimizada para Codex;
-- futuras versoes para OpenCode e Hermes;
-- documentacao comparativa e guias de instalacao/uso.
+- a versao implementada para OpenCode;
+- a versao implementada para Hermes (Agent, Nous Research);
+- a versao implementada para Antigravity (CLI, Google);
+- documentacao comparativa e guias de instalacao/uso;
+- script de validacao cross-harness (CI de drift de marcadores).
 
 O conteudo funcional principal e a metodologia de arqueologia de dominio e modernizacao de sistemas legados: auditar codigo e banco reais, extrair regras, separar acidente de requisito e produzir documentacao para reconstrucao.
 
@@ -19,21 +22,29 @@ O conteudo funcional principal e a metodologia de arqueologia de dominio e moder
 
 ```text
 .
-├── .claude/
+├── .claude/        Claude Code (skill + agent + references + .skill binary)
 │   ├── agents/
 │   └── skills/
-├── .codex/
+├── .codex/         Codex CLI (skill + agent + references)
 │   ├── agents/
 │   └── skills/
-├── .opencode/
-│   └── ...
-├── .hermes/
-│   └── ...
-├── docs/
+├── .opencode/      OpenCode (skill + agent + references)
+│   ├── agents/
+│   └── skills/
+├── .hermes/        Hermes Agent — distribution pattern
+│   ├── SOUL.md
+│   ├── distribution.yaml
+│   ├── config.yaml
+│   └── skills/development/modernizacao-legado/
+├── .antigravity/   Antigravity CLI (skill + agent + references)
+│   ├── agents/
+│   └── skills/
+├── docs/           Documentacao humana e cross-harness
 │   ├── modernizacao-legado-codex.md
-│   ├── modernizacao-legado-opencode.md
-│   ├── modernizacao-legado-hermes.md
 │   └── comparativo-harnesses.md
+├── scripts/        Scripts de validacao
+│   ├── check-marker-drift.sh
+│   └── README.md
 └── README-FOR-AGENTS.md
 ```
 
@@ -105,12 +116,12 @@ Guarda documentacao voltada a humanos e agentes:
 
 Documentos versionados (atualizar ao criar uma nova versao):
 
-- `docs/modernizacao-legado-codex.md` — guia de uso da versao Codex.
-- `docs/modernizacao-legado-opencode.md` — guia de uso da versao OpenCode (criar quando a doc existir).
-- `docs/modernizacao-legado-hermes.md` — guia de uso da versao Hermes (criar quando a doc existir).
-- `docs/comparativo-harnesses.md`: matriz comparativa de todos os harnesses suportados (Claude, Codex, OpenCode, Hermes, Antigravity). Documento de referencia para criacao de novas versoes.
+- `docs/modernizacao-legado-codex.md` — guia completo de uso da versao Codex (instalacao, fluxo, validacao). Os outros harnesses compartilham a mesma metodologia documentada aqui; o que muda e o formato de empacotamento, capturado em `docs/comparativo-harnesses.md`.
+- `docs/comparativo-harnesses.md` — matriz 5×N dos harnesses suportados (Claude, Codex, OpenCode, Hermes, Antigravity). Documento canonico de referencia para criacao de novas versoes.
 
-Tambem ha um script de validacao em `scripts/check-marker-drift.sh` que detecta drift nos 7 marcadores canonicos de "Classificacao de regras" entre os 5 `SKILL.md` da metodologia; rode antes de commit/push ou em CI (`bash scripts/check-marker-drift.sh`).
+Scripts de validacao em `scripts/`:
+
+- `scripts/check-marker-drift.sh` — detecta drift nos 7 marcadores canonicos de "Classificacao de regras" entre os 5 `SKILL.md` da metodologia. Rode antes de commit/push ou em CI (`bash scripts/check-marker-drift.sh`). Exit 0 = OK, exit 1 = drift detectado. Documentado em `scripts/README.md`.
 
 Documentacao auxiliar deve ficar em `docs/`, nao dentro das skills, quando nao for necessaria para execucao direta da skill.
 

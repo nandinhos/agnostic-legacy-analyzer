@@ -136,3 +136,13 @@ sed -n '1,120p' .codex/skills/modernizacao-legado/agents/openai.yaml
 - Amostras de dados devem ser anonimizadas.
 - Segredos devem ser mascarados.
 - Toda decisao tecnica relevante deve ter evidencia.
+
+## Veja Tambem
+
+- `docs/comparativo-harnesses.md`: matriz 5×N dos harnesses suportados. Mostra o que muda entre Claude, Codex, OpenCode, Hermes e Antigravity em termos de paths, encoding, metadata, persona e convencoes.
+- `README-FOR-AGENTS.md`: entry point para agentes que vao usar a metodologia ou criar novas versoes por harness.
+- `scripts/check-marker-drift.sh`: CI que valida que os 7 marcadores canonicos estao consistentes entre as 5 versoes.
+
+## Cross-Reference
+
+Esta e a doc de uso **da versao Codex**. As outras versoes (Claude, OpenCode, Hermes, Antigravity) compartilham a mesma metodologia; o que muda e o formato de empacotamento e o agent/persona. Para detalhes por harness, consulte `docs/comparativo-harnesses.md`.

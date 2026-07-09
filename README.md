@@ -4,7 +4,7 @@ Workflows agnosticos para agentes analisarem sistemas legados, extrairem dominio
 
 ## Objetivo
 
-Este repositorio organiza versoes otimizadas de uma metodologia de arqueologia de dominio para diferentes harnesses de agentes, como Claude, Codex, OpenCode e Hermes.
+Este repositorio organiza versoes otimizadas de uma metodologia de arqueologia de dominio para diferentes harnesses de agentes: Claude (Code), Codex, OpenCode, Hermes (Agent) e Antigravity (CLI).
 
 A metodologia ajuda a transformar um sistema legado real em documentacao tecnica suficiente para reconstrucao:
 
@@ -24,11 +24,13 @@ A metodologia ajuda a transformar um sistema legado real em documentacao tecnica
 ## Estrutura
 
 ```text
-.claude/   Versao original para Claude
-.codex/    Versao otimizada para Codex
-.opencode/ Reservada para versao OpenCode
-.hermes/   Reservada para versao Hermes
-docs/      Documentacao de uso, instalacao e diferencas
+.claude/     Versao Claude Code (skill + agent + 2 references)
+.codex/      Versao Codex CLI (skill + agent + 2 references + 3 advanced)
+.opencode/   Versao OpenCode (skill + agent + 2 references)
+.hermes/     Versao Hermes Agent (distribution + SOUL + skill + 2 references)
+.antigravity/ Versao Antigravity CLI (skill + agent + 2 references)
+docs/        Documentacao de uso, instalacao, comparativo
+scripts/     Scripts de validacao (check-marker-drift.sh)
 ```
 
 Leia primeiro `README-FOR-AGENTS.md` se voce for um agente ou estiver criando uma nova versao para outro harness.
@@ -39,12 +41,16 @@ A analise e documental e read-only. Codigo legado, banco, configuracao e dados n
 
 ## Status
 
-- Claude: versao inicial existente.
-- Codex: versao otimizada criada.
-- OpenCode: pendente.
-- Hermes: pendente.
+- Claude: versao inicial implementada.
+- Codex: versao otimizada implementada.
+- OpenCode: versao implementada.
+- Hermes: versao implementada.
+- Antigravity: versao implementada.
+- Polish cross-harness: CI de drift de marcadores + comparativo-harnesses.md.
 
 ## Guias
 
 - [`README-FOR-AGENTS.md`](README-FOR-AGENTS.md): entry point para agentes. Estrutura recomendada, regras para criar novas versoes por harness, saida padrao da metodologia, criterios de qualidade.
 - [`docs/modernizacao-legado-codex.md`](docs/modernizacao-legado-codex.md): guia de uso da versao Codex (instalacao, fluxo, validacao).
+- [`docs/comparativo-harnesses.md`](docs/comparativo-harnesses.md): matriz 5×N dos harnesses suportados, com paths, encoding, convencoes e equivalencias.
+- [`scripts/check-marker-drift.sh`](scripts/check-marker-drift.sh): CI de drift de marcadores. Rode antes de commit ou em pipeline.
